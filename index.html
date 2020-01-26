@@ -2,31 +2,111 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>Trivia Game</title>	
+	<title>Basic RPG</title>	
 	<!-- Bootstrap Cdn -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<!-- CSS LINKS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="" type="text/javascript" href="game.js">
 	
 	<!-- jquery Cdn -->
-	<script
+	<!--<script
 	  src="https://code.jquery.com/jquery-3.1.1.min.js"
 	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>-->
       
 </head>
 
 <body>
-<div id="charactersSelect"></div>
+<div class="container">
+	<div class="row gallery">
+		<div id="backgroundText">SPACE GHOST RUMBLE</div>
 
-<div id="enemySelect"></div>
+		<div id="spaceghost" class="col-lg-3 col-md-3 col-sm-6 thumb">
+			<a class="thumbnail" href="#">
+				<img id="space-ghost" class="img-responsive" src="images/space-ghost.jpg" alt="Iron Man" width="200px" height="200px">
+			</a>
+			<br>
+			<span>Attack Points:
+				<span class="attack" value="10">10</span>
+			</span>
+			<br>
+			<span>Health Points:
+				<span class="HP" value="130">130</span>
+			</span>
+			<br>
+			<span>Counter-attack Points:
+				<span class="counterAttack">8</span>
+			</span>
+		</div>
+
+		<div id="zorak" class="col-lg-3 col-md-3 col-sm-6 thumb">
+			<a class="thumbnail" href="#">
+				<img id="zorak-img" class="img-responsive" src="images/zorak.jpg" alt="Iron Man" width="200px" height="200px">
+			</a>
+			<br>
+			<span>Attack Points:
+				<span class="attack" value="10">10</span>
+			</span>
+			<br>
+			<span>Health Points:
+				<span class="HP" value="130">130</span>
+			</span>
+			<br>
+			<span>Counter-attack Points:
+				<span class="counterAttack">8</span>
+			</span>
+		</div>
+
+		<div id="moltar" class="col-lg-3 col-md-3 col-sm-6 thumb">
+			<a class="thumbnail" href="#">
+				<img id="moltar-img" class="img-responsive" src="images/moltar.jpg" alt="Iron Man" width="200px" height="200px">
+			</a>
+			<br>
+			<span>Attack Points:
+				<span class="attack" value="10">10</span>
+			</span>
+			<br>
+			<span>Health Points:
+				<span class="HP" value="130">130</span>
+			</span>
+			<br>
+			<span>Counter-attack Points:
+				<span class="counterAttack">8</span>
+			</span>
+		</div>
+
+	
+		<!--<div id="charactersSelect"></div>
+			<h3>Choose your fighter!</h3>
+			<img src="images/space-ghost.jpg">
+			<img src="images/zorak.jpg">
+			<img src="images/moltar.jpg">-->
+	
+	<!--<div id="opponentSelect"></div>-->
+
+</div>
 
 <div id="fightSection">
-    <button type="submit">Attack!</button>
-    <div id="defenderPosition"></div>
+	<button id="attackbtn" class="btn btn-danger">Attack!</button>
+	<button id="resetbtn" class="btn btn-primary">Reset</button>
+	<div id="playerArea" class="characterArea col-sm-5 text-center">
+		<p>Your Character:</p>
+		<div id="player">
+			<!-- Opponent image goes here -->
+		</div>
+	</div>
+    <div id="opponentArea" class="characterArea col-sm-5 text-center">
+		<p>Your Opponent:</p>
+		<div id="opponent">
+			<!-- Opponent image goes here -->
+		</div>
+	</div>
 </div>
+
+
 <script type="text/javascript">
 </script>
 </body>
