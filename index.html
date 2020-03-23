@@ -116,26 +116,60 @@
 
 <!--<script type="text/javascript">-->
 <script>
+
+var firstEmpty = true;
+var secondEmpty = true;
+var foesLeft = 2;
+
+$(document).ready(function () {
+
+	$(".container").click(function () {
+        var activate = function () {
+
+	$("#spaceghost").on("click", function () {
+                    $("#spaceghost").detach().appendTo('#player');
+                    $("#spaceghost").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    firstEmpty = false;
+					console.log(firstEmpty);
+		
+	})
+	
+	
+	$("#zorak").on("click", function () {
+                $("#zorak").detach().appendTo('#player');
+                $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+				firstEmpty = false;
+                console.log(firstEmpty);
+				//console.log("Wahahaha!");
+				});
+
+				else {
+                $(".gallery #zorak").one("click", function () {
+                    $("#zorak").detach().appendTo('#opponent');
+                    $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    $("#attackbtn").prop("disabled", false);
+                    secondEmpty = false;
+
 	$("#attackbtn").on("click", function () {
+        if (!firstEmpty && !secondEmpty) {
+            console.log(firstEmpty);
+        }
+    else {
         console.log("Hello there!");
-    })
+    }
+})
+    
 
 	$("#resetbtn").on("click", function () {
 		console.log("All clear!");
 	})
 
-	$("#spaceghost").on("click", function () {
-                    $("#spaceghost").detach().appendTo('#player');
-                    $("#spaceghost").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
-                    
-					console.log("You clicked me!");
-	})
 	
-	$("#zorak").on("click", function () {
-                $("#zorak").detach().appendTo('#opponent');
-                $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
-				console.log("Wahahaha!");
-				});
+	
+}
+	})
+			})
+
 </script>
 </body>
 </html>
