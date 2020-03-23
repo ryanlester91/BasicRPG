@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<!-- CSS LINKS -->
-    <link rel="stylesheet" type="text/css" href="reset.css">
+    <!--<link rel="stylesheet" type="text/css" href="reset.css">-->
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link rel="" type="text/javascript" href="game.js">
 	
@@ -15,7 +15,9 @@
 	<!--<script
 	  src="https://code.jquery.com/jquery-3.1.1.min.js"
 	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>-->
+	  crossorigin="anonymous"></script>-->
+	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
       
 </head>
 
@@ -38,9 +40,9 @@
 				<span class="HP" value="130">130</span>
 			</span>
 			<br>
-			<span>Counter-attack Points:
+			<!--<span>Counter-attack Points:
 				<span class="counterAttack">8</span>
-			</span>
+			</span>-->
 		</div>
 
 		<div id="zorak" class="col-lg-3 col-md-3 col-sm-6 thumb">
@@ -56,9 +58,9 @@
 				<span class="HP" value="130">130</span>
 			</span>
 			<br>
-			<span>Counter-attack Points:
+			<!--<span>Counter-attack Points:
 				<span class="counterAttack">8</span>
-			</span>
+			</span>-->
 		</div>
 
 		<div id="moltar" class="col-lg-3 col-md-3 col-sm-6 thumb">
@@ -74,9 +76,9 @@
 				<span class="HP" value="130">130</span>
 			</span>
 			<br>
-			<span>Counter-attack Points:
+			<!--<span>Counter-attack Points:
 				<span class="counterAttack">8</span>
-			</span>
+			</span>-->
 		</div>
 
 	
@@ -112,7 +114,28 @@
 </div>
 
 
-<script type="text/javascript">
+<!--<script type="text/javascript">-->
+<script>
+	$("#attackbtn").on("click", function () {
+        console.log("Hello there!");
+    })
+
+	$("#resetbtn").on("click", function () {
+		console.log("All clear!");
+	})
+
+	$("#spaceghost").on("click", function () {
+                    $("#spaceghost").detach().appendTo('#player');
+                    $("#spaceghost").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    
+					console.log("You clicked me!");
+	})
+	
+	$("#zorak").on("click", function () {
+                $("#zorak").detach().appendTo('#opponent');
+                $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+				console.log("Wahahaha!");
+				});
 </script>
 </body>
 </html>
