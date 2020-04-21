@@ -126,35 +126,59 @@ $(document).ready(function () {
 	$(".container").click(function () {
         var activate = function () {
 
-	$("#spaceghost").on("click", function () {
+			if(firstEmpty) {
+				$("#spaceghost").on("click", function () {
                     $("#spaceghost").detach().appendTo('#player');
                     $("#spaceghost").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
                     firstEmpty = false;
 					console.log(firstEmpty);
 		
-	})
+				})
 	
 	
-	$("#zorak").on("click", function () {
-                $("#zorak").detach().appendTo('#player');
-                $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
-				firstEmpty = false;
-                console.log(firstEmpty);
-				//console.log("Wahahaha!");
-				});
+				$("#zorak").on("click", function () {
+                	$("#zorak").detach().appendTo('#player');
+                	$("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+					firstEmpty = false;
+                	console.log(firstEmpty);
+					//console.log("Wahahaha!");
+					});
 
-				/*else {
-                $(".gallery #zorak").one("click", function () {
-                    $("#zorak").detach().appendTo('#opponent');
-                    $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
-                    $("#attackbtn").prop("disabled", false);
-					secondEmpty = false;  })
+				$("#moltar").on("click", function () {
+                	$("#moltar").detach().appendTo('#player');
+                	$("#moltar").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+					firstEmpty = false;
+                	console.log(firstEmpty);
+					//console.log("Wahahaha!");
+					});
+	
+
+				} else {
+					$(".gallery #zorak").one("click", function () {
+                    	$("#zorak").detach().appendTo('#opponent');
+                    	$("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    	$("#attackbtn").prop("disabled", false);
+						secondEmpty = false;  
+				});	
+					$(".gallery #zorak").one("click", function () {
+                    	$("#zorak").detach().appendTo('#opponent');
+                    	$("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    	$("#attackbtn").prop("disabled", false);
+						secondEmpty = false;  
+					});
 					
-				$(".gallery #moltar").one("click", function () {
-                    $("#moltar").detach().appendTo('#opponent');
-                    $("#moltar").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
-                    $("#attackbtn").prop("disabled", false);
-                    secondEmpty = false;  })*/
+					$(".gallery #moltar").one("click", function () {
+                    	$("#moltar").detach().appendTo('#opponent');
+                    	$("#moltar").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    	$("#attackbtn").prop("disabled", false);
+						secondEmpty = false;
+					});
+
+				}
+			};
+
+		activate();
+			});
 
 	$("#attackbtn").on("click", function () {
         if (!firstEmpty && !secondEmpty) {
@@ -227,13 +251,45 @@ $(document).ready(function () {
 
 	$("#resetbtn").on("click", function () {
 		console.log("All clear!");
-	})
+		$(".thumb").off("click");
+        var resetAttack = $(".attack").attr("value");
+        $(".attack").text(resetAttack);
+
+        var resetGhostHP = $("#spaceghost .HP").attr("value");
+        $("#spaceghost .HP").text(resetGhostHP);
+        var resetZorakHP = $("#zorak .HP").attr("value");
+        $("#zorak .HP").text(resetCapHP);
+        var resetMoltarHP = $("#moltar .HP").attr("value");
+        $("#moltar .HP").text(resetThorHP);
+        //var resetHulkHP = $("#hulk .HP").attr("value");
+        //$("#hulk .HP").text(resetHulkHP);
+
+        $("#player .thumb").attr("style", "position: static;");
+        $("#opponentArea p").show();
+        $("#playerArea p").show();
+        $(".gallery").show();
+        $("#attackbtn").prop("disabled", true);
+        $("#message").text("Double-click to choose your character, then click your opponent. Avenge!");
+        $(".gallery").append($("#spaceghost").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+        $(".gallery").append($("#zorak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+        $(".gallery").append($("#moltar").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+        //$(".gallery").append($("#hulk").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+        $("body").attr("style", "background-image:url('../images/setting.jpg') no-repeat center center fixed;");
+        $("#opponentArea").html("<p>Your opponent:</p><div id='opponent'><!-- Opponent image goes here --></div>");
+        foesLeft = 2;
+
+        $("#player").empty();
+        $("#opponent").empty();
+        firstEmpty = true;
+
+    });
+});
 
 	
 	
-}
-	})
-			})
+
+	
+			
 
 </script>
 </body>
