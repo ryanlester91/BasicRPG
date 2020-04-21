@@ -29,56 +29,74 @@
 
 		<div id="spaceghost" class="col-lg-3 col-md-3 col-sm-6 thumb">
 			<a class="thumbnail" href="#">
-				<img id="space-ghost" class="img-responsive" src="images/space-ghost.jpg" alt="Iron Man" width="200px" height="200px">
+				<img id="space-ghost" class="img-responsive" src="images/space-ghost.jpg" alt="Space Ghost" width="200px" height="200px">
 			</a>
 			<br>
 			<span>Attack Points:
-				<span class="attack" value="10">10</span>
+				<span class="attack" value="20">20</span>
 			</span>
 			<br>
 			<span>Health Points:
 				<span class="HP" value="130">130</span>
 			</span>
 			<br>
-			<!--<span>Counter-attack Points:
+			<span>Counter-attack Points:
 				<span class="counterAttack">8</span>
-			</span>-->
+			</span>
 		</div>
 
 		<div id="zorak" class="col-lg-3 col-md-3 col-sm-6 thumb">
 			<a class="thumbnail" href="#">
-				<img id="zorak-img" class="img-responsive" src="images/zorak.jpg" alt="Iron Man" width="200px" height="200px">
+				<img id="zorak-img" class="img-responsive" src="images/zorak.jpg" alt="Zorak" width="200px" height="200px">
 			</a>
 			<br>
 			<span>Attack Points:
-				<span class="attack" value="10">10</span>
+				<span class="attack" value="20">20</span>
 			</span>
 			<br>
 			<span>Health Points:
 				<span class="HP" value="130">130</span>
 			</span>
 			<br>
-			<!--<span>Counter-attack Points:
+			<span>Counter-attack Points:
 				<span class="counterAttack">8</span>
-			</span>-->
+			</span>
 		</div>
 
 		<div id="moltar" class="col-lg-3 col-md-3 col-sm-6 thumb">
 			<a class="thumbnail" href="#">
-				<img id="moltar-img" class="img-responsive" src="images/moltar.jpg" alt="Iron Man" width="200px" height="200px">
+				<img id="moltar-img" class="img-responsive" src="images/moltar.jpg" alt="Moltar" width="200px" height="200px">
 			</a>
 			<br>
 			<span>Attack Points:
-				<span class="attack" value="10">10</span>
+				<span class="attack" value="23">23</span>
 			</span>
 			<br>
 			<span>Health Points:
 				<span class="HP" value="130">130</span>
 			</span>
 			<br>
-			<!--<span>Counter-attack Points:
+			<span>Counter-attack Points:
 				<span class="counterAttack">8</span>
-			</span>-->
+			</span>
+		</div>
+
+		<div id="brak" class="col-lg-3 col-md-3 col-sm-6 thumb">
+			<a class="thumbnail" href="#">
+				<img id="brak-img" class="img-responsive" src="images/brak.jpg" alt="Brak" width="200px" height="200px">
+			</a>
+			<br>
+			<span>Attack Points:
+				<span class="attack" value="17">17</span>
+			</span>
+			<br>
+			<span>Health Points:
+				<span class="HP" value="150">130</span>
+			</span>
+			<br>
+			<span>Counter-attack Points:
+				<span class="counterAttack">10</span>
+			</span>
 		</div>
 
 	
@@ -151,12 +169,20 @@ $(document).ready(function () {
                 	console.log(firstEmpty);
 					//console.log("Wahahaha!");
 					});
+
+				$("#brak").on("click", function () {
+                	$("#brak").detach().appendTo('#player');
+                	$("#brak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+					firstEmpty = false;
+                	console.log(firstEmpty);
+					//console.log("Wahahaha!");
+					});
 	
 
 				} else {
-					$(".gallery #zorak").one("click", function () {
-                    	$("#zorak").detach().appendTo('#opponent');
-                    	$("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+					$(".gallery #spaceghost").one("click", function () {
+                    	$("#spaceghost").detach().appendTo('#opponent');
+                    	$("#spaceghost").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
                     	$("#attackbtn").prop("disabled", false);
 						secondEmpty = false;  
 				});	
@@ -170,6 +196,13 @@ $(document).ready(function () {
 					$(".gallery #moltar").one("click", function () {
                     	$("#moltar").detach().appendTo('#opponent');
                     	$("#moltar").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    	$("#attackbtn").prop("disabled", false);
+						secondEmpty = false;
+					});
+
+					$(".gallery #brak").one("click", function () {
+                    	$("#brak").detach().appendTo('#opponent');
+                    	$("#brak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
                     	$("#attackbtn").prop("disabled", false);
 						secondEmpty = false;
 					});
@@ -232,7 +265,7 @@ $(document).ready(function () {
                 $("#opponentArea p").hide();
                 $("#playerArea p").hide();
                 $("#player .thumb").attr("style", "position: absolute; top: 120%; left: 70%;");
-                $("body").attr("style", "background-image:url('assets/images/antman.png');");
+                $("body").attr("style", "background-image:url('images/ghost-flex.jpg');");
                 $("#attackbtn").prop("disabled", true);
             }
 
@@ -258,22 +291,22 @@ $(document).ready(function () {
         var resetGhostHP = $("#spaceghost .HP").attr("value");
         $("#spaceghost .HP").text(resetGhostHP);
         var resetZorakHP = $("#zorak .HP").attr("value");
-        $("#zorak .HP").text(resetCapHP);
+        $("#zorak .HP").text(resetZorakHP);
         var resetMoltarHP = $("#moltar .HP").attr("value");
-        $("#moltar .HP").text(resetThorHP);
-        //var resetHulkHP = $("#hulk .HP").attr("value");
-        //$("#hulk .HP").text(resetHulkHP);
+        $("#moltar .HP").text(resetMoltarHP);
+    	var resetBrakHP = $("#brak .HP").attr("value");
+        $("#brak .HP").text(resetBrakHP);
 
         $("#player .thumb").attr("style", "position: static;");
         $("#opponentArea p").show();
         $("#playerArea p").show();
         $(".gallery").show();
         $("#attackbtn").prop("disabled", true);
-        $("#message").text("Double-click to choose your character, then click your opponent. Avenge!");
+        $("#message").text("Double-click to choose your character, then click your opponent. Rumble again!");
         $(".gallery").append($("#spaceghost").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $(".gallery").append($("#zorak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $(".gallery").append($("#moltar").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
-        //$(".gallery").append($("#hulk").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+        $(".gallery").append($("#brak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $("body").attr("style", "background-image:url('../images/setting.jpg') no-repeat center center fixed;");
         $("#opponentArea").html("<p>Your opponent:</p><div id='opponent'><!-- Opponent image goes here --></div>");
         foesLeft = 2;
