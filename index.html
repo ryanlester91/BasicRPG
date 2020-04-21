@@ -143,12 +143,77 @@ $(document).ready(function () {
 				//console.log("Wahahaha!");
 				});
 
-				else {
+				/*else {
                 $(".gallery #zorak").one("click", function () {
                     $("#zorak").detach().appendTo('#opponent');
                     $("#zorak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
                     $("#attackbtn").prop("disabled", false);
-                    secondEmpty = false;
+					secondEmpty = false;  })
+					
+				$(".gallery #moltar").one("click", function () {
+                    $("#moltar").detach().appendTo('#opponent');
+                    $("#moltar").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    $("#attackbtn").prop("disabled", false);
+                    secondEmpty = false;  })*/
+
+	$("#attackbtn").on("click", function () {
+        if (!firstEmpty && !secondEmpty) {
+            console.log(firstEmpty);
+            $(".thumb").off("click");
+            var baseAttack = $("#player .attack").attr("value");
+            var selfAttack = $("#player .attack").text();
+            var oppAttack = $("#opponent .attack").text();
+            var selfHP = $("#player .HP").text();
+            var oppHP = $("#opponent .HP").text();
+            var selfCounter = $("#player .counterAttack").text();
+            var oppCounter = $("#opponent .counterAttack").text();
+
+            console.log(selfAttack);
+            console.log(oppAttack);
+            selfHP = parseInt(selfHP) - parseInt(oppCounter);
+            $("#player .HP").text(selfHP);
+            oppHP = parseInt(oppHP) - parseInt(selfAttack);
+            $("#opponent .HP").text(oppHP);
+
+            $("#message").html("<p>Your character dealt " + selfAttack + " damage points.</p><p>Your opponent dealt " + oppCounter + " damage points.</p>");
+            selfAttack = parseInt(selfAttack) + parseInt(baseAttack);
+            $("#player .attack").text(selfAttack);
+			console.log(selfAttack);
+			
+			if (oppHP <= 0 && selfHP <= 0 & foesLeft === 0) {
+                $("#message").text("It's a tie! Everyone was defeated!");
+                $("body").attr("style", "background-image:url('assets/images/defeat.jpg');");
+                $("#opponentArea p").hide();
+                $("#playerArea p").hide();
+                $("#opponent .thumb").detach().appendTo(".gallery").hide();
+                $("#player .thumb").detach().appendTo(".gallery").hide();
+                $("#attackbtn").prop("disabled", true);
+            } else if (selfHP <= 0) {
+                $("#message").html("<p>You lost!</p>");
+                $("#player .thumb").detach().appendTo(".gallery").hide();
+                $("#attackbtn").prop('disabled', true);
+                $("body").attr("style", "background-image:url('assets/images/stark.jpg');");
+                $("#opponentArea p").hide();
+                $("#playerArea p").hide();
+                $("#opponent").hide();
+                $(".gallery").hide();
+            } else if (oppHP <= 0 && foesLeft > 0) {
+                $("#message").html("<p>You defeated " + $("#opponent img").attr("alt") + "!</p>");
+                $("#opponent .thumb").detach().appendTo(".gallery").hide();
+                $("#attackbtn").prop("disabled", true);
+                foesLeft--;
+            } else if (oppHP <= 0 && foesLeft === 0) {
+                $("#message").text("Congratulations, " + $("#player img").attr("alt") + "! You defeated all enemies!");
+                $("#opponent .thumb").detach().appendTo(".gallery").hide();
+                $("#opponentArea p").hide();
+                $("#playerArea p").hide();
+                $("#player .thumb").attr("style", "position: absolute; top: 120%; left: 70%;");
+                $("body").attr("style", "background-image:url('assets/images/antman.png');");
+                $("#attackbtn").prop("disabled", true);
+            }
+
+        }
+    });
 
 	$("#attackbtn").on("click", function () {
         if (!firstEmpty && !secondEmpty) {
