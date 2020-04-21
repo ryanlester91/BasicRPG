@@ -41,7 +41,7 @@
 			</span>
 			<br>
 			<span>Counter-attack Points:
-				<span class="counterAttack">8</span>
+				<span class="counterAttack">23</span>
 			</span>
 		</div>
 
@@ -59,7 +59,7 @@
 			</span>
 			<br>
 			<span>Counter-attack Points:
-				<span class="counterAttack">8</span>
+				<span class="counterAttack">22</span>
 			</span>
 		</div>
 
@@ -77,7 +77,7 @@
 			</span>
 			<br>
 			<span>Counter-attack Points:
-				<span class="counterAttack">8</span>
+				<span class="counterAttack">25</span>
 			</span>
 		</div>
 
@@ -95,9 +95,45 @@
 			</span>
 			<br>
 			<span>Counter-attack Points:
-				<span class="counterAttack">10</span>
+				<span class="counterAttack">17</span>
 			</span>
 		</div>
+
+		<div id="blackwidow" class="col-lg-3 col-md-3 col-sm-6 thumb">
+			<a class="thumbnail" href="#">
+				<img id="moltar-img" class="img-responsive" src="images/blackwidow.jpg" alt="Black Widow" width="200px" height="200px">
+			</a>
+			<br>
+			<span>Attack Points:
+				<span class="attack" value="23">23</span>
+			</span>
+			<br>
+			<span>Health Points:
+				<span class="HP" value="130">130</span>
+			</span>
+			<br>
+			<span>Counter-attack Points:
+				<span class="counterAttack">21</span>
+			</span>
+		</div>
+
+		<!--<div id="brak" class="col-lg-3 col-md-3 col-sm-6 thumb">
+			<a class="thumbnail" href="#">
+				<img id="brak-img" class="img-responsive" src="images/brak.jpg" alt="Brak" width="200px" height="200px">
+			</a>
+			<br>
+			<span>Attack Points:
+				<span class="attack" value="17">17</span>
+			</span>
+			<br>
+			<span>Health Points:
+				<span class="HP" value="150">130</span>
+			</span>
+			<br>
+			<span>Counter-attack Points:
+				<span class="counterAttack">10</span>
+			</span>
+		</div>-->
 
 	
 		
@@ -177,6 +213,14 @@ $(document).ready(function () {
                 	console.log(firstEmpty);
 					//console.log("Wahahaha!");
 					});
+
+				$("#blackwidow").on("click", function () {
+                	$("#blackwidow").detach().appendTo('#player');
+                	$("#blackwidow").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+					firstEmpty = false;
+                	console.log(firstEmpty);
+					//console.log("Wahahaha!");
+					});
 	
 
 				} else {
@@ -203,6 +247,13 @@ $(document).ready(function () {
 					$(".gallery #brak").one("click", function () {
                     	$("#brak").detach().appendTo('#opponent');
                     	$("#brak").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
+                    	$("#attackbtn").prop("disabled", false);
+						secondEmpty = false;
+					});
+
+					$(".gallery #blackwidow").one("click", function () {
+                    	$("#blackwidow").detach().appendTo('#opponent');
+                    	$("#blackwidow").removeClass("col-lg-3 col-md-3 col-sm-6").addClass("col-sm-12");
                     	$("#attackbtn").prop("disabled", false);
 						secondEmpty = false;
 					});
@@ -295,7 +346,9 @@ $(document).ready(function () {
         var resetMoltarHP = $("#moltar .HP").attr("value");
         $("#moltar .HP").text(resetMoltarHP);
     	var resetBrakHP = $("#brak .HP").attr("value");
-        $("#brak .HP").text(resetBrakHP);
+		$("#brak .HP").text(resetBrakHP);
+		var resetWidowHP = $("#blackwidow .HP").attr("value");
+        $("#blackwidow .HP").text(resetWidowHP);
 
         $("#player .thumb").attr("style", "position: static;");
         $("#opponentArea p").show();
@@ -306,7 +359,8 @@ $(document).ready(function () {
         $(".gallery").append($("#spaceghost").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $(".gallery").append($("#zorak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $(".gallery").append($("#moltar").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
-        $(".gallery").append($("#brak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+		$(".gallery").append($("#brak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
+		$(".gallery").append($("#blackwidow").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $("body").attr("style", "background-image:url('../images/setting.jpg') no-repeat center center fixed;");
         $("#opponentArea").html("<p>Your opponent:</p><div id='opponent'><!-- Opponent image goes here --></div>");
         foesLeft = 2;
