@@ -7,3 +7,7 @@ body {
     font-size: 55px;
     text-shadow: 2px 2px grey;
 }
+
+.container {
+    position: relative;
+}
