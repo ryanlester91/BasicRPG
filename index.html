@@ -139,7 +139,7 @@
 		<div class="col-sm-12">
 			<div id="message" class="text-center">
 				<!-- Post-attack message goes here.-->
-				<p>Click to choose your character, then click your opponent. Rumble!</p>
+				<p>Double-click to choose your character, then click your opponent. Rumble!</p>
 			</div>
 		</div>
 	</div>
@@ -306,6 +306,7 @@ $(document).ready(function () {
 
         }
     });
+	//Look into how to get opponent to continue attacking
 
 	$("#attackbtn").on("click", function () {
         if (!firstEmpty && !secondEmpty) {
@@ -339,7 +340,7 @@ $(document).ready(function () {
         $("#playerArea p").show();
         $(".gallery").show();
         $("#attackbtn").prop("disabled", true);
-        $("#message").text("Double-click to choose your character, then click your opponent. Rumble again!");
+        $("#message").text("Click to choose your character, then click your opponent. Rumble again!");
         $(".gallery").append($("#spaceghost").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $(".gallery").append($("#zorak").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
         $(".gallery").append($("#moltar").show().attr("class", "col-lg-3 col-md-3 col-sm-6 thumb"));
@@ -352,6 +353,7 @@ $(document).ready(function () {
         $("#player").empty();
         $("#opponent").empty();
         firstEmpty = true;
+
 
     });
 });
