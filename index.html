@@ -282,6 +282,8 @@ $(document).ready(function () {
                 $("#attackbtn").prop("disabled", true);
             } else if (selfHP <= 0) {
                 $("#message").html("<p>You lost!</p>");
+				//$("body").addClass("card");
+				//$(".card").attr("style", "width: 18rem");
                 $("#player .thumb").detach().appendTo(".gallery").hide();
                 $("#attackbtn").prop('disabled', true);
                 $("body").attr("style", "background-image:url('images/zorak-laughing.jpg');");
